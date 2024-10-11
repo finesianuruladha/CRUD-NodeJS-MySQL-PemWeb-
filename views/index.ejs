@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Crud Node JS - MySQL</title>
+</head>
+<body>
+    <h1>Daftar User/Pengguna</h1>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Nama</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Aksi</th>
+        </tr>
+        <% users.forEach(pengguna => { %> <!-- Perbaiki penamaan variabel di sini -->
+        <tr>
+            <td><%= pengguna.id %></td> <!-- Sesuaikan dengan lowercase -->
+            <td><%= pengguna.name %></td>
+            <td><%= pengguna.email %></td> <!-- Pastikan menggunakan email lowercase -->
+            <td><%= pengguna.phone %></td> <!-- Pastikan menggunakan phone lowercase -->
+            <td>
+                <a href="/edit/<%= pengguna.id %>">Edit</a>
+                <a href="/delete/<%= pengguna.id %>">Hapus</a>
+            </td>
+        </tr>
+        <% }) %>
+    </table>
+
+    <h2>Tambah Pengguna Baru</h2>
+    <form action="/add" method="POST">
+        <label for="name">Nama:</label>
+        <input type="text" id="name" name="name" required><br>
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email"><br> <!-- Pastikan lowercase -->
+        <label for="phone">Phone:</label>
+        <input type="text" name="phone" id="phone"><br> <!-- Pastikan lowercase -->
+        <button type="submit">Tambah</button>
+    </form>
+</body>
+</html>
